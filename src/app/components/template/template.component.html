@@ -20,11 +20,18 @@
         required
         #nombre="ngModel"
       />
-      <div class="form-control-feedback" *ngIf="nombre.errors?.required">
+      <div
+        class="form-control-feedback"
+        *ngIf="f.controls['nombre'].errors?.required"
+      >
         Este campo es requerido
       </div>
-      <div class="form-control-feedback" *ngIf="nombre.errors?.minlength">
-        Por lo menos {{ nombre.errors.minlength.requiredLength }} caracteres
+      <div
+        class="form-control-feedback"
+        *ngIf="f.controls['nombre'].errors?.minlength"
+      >
+        Por lo menos
+        {{ f.controls["nombre"].errors.minlength.requiredLength }} caracteres
       </div>
     </div>
   </div>
@@ -41,7 +48,7 @@
         required
         #apellido="ngModel"
       />
-      <div *ngIf="apellido.errors?.required">
+      <div *ngIf="f.controls['apellido'].errors?.required">
         Este campo es requerido
       </div>
     </div>
@@ -60,10 +67,10 @@
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         #email="ngModel"
       />
-      <div *ngIf="email.errors?.required">
+      <div *ngIf="f.controls['email'].errors?.required">
         Este campo es requerido
       </div>
-      <div *ngIf="email.errors?.pattern">
+      <div *ngIf="f.controls['email'].errors?.pattern">
         Correo mal formado
       </div>
     </div>
